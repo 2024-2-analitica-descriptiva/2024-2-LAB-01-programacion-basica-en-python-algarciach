@@ -20,3 +20,22 @@ def pregunta_10():
 
 
     """
+    list_cols_145 = []
+    result = []
+
+    with open('./files/input/data.csv', 'r') as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            list_cols_145.append((column[0], column[3].split(','), column[4].split(',')))
+
+    result = [(x[0], len(x[1]), len(x[2])) for x in list_cols_145]
+
+    return(result)
+
+
+
+
+
+if __name__ == '__main__':
+    print(pregunta_10())

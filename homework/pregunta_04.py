@@ -26,3 +26,20 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    from collections import Counter
+
+    list_col3 = []
+    result = []
+
+    with open('./files/input/data.csv', 'r') as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            list_col3.append(column[2][5:7])
+
+    result = sorted(list(Counter(list_col3).items()))
+
+    return(result)
+
+if __name__ == '__main__':
+    print(pregunta_04())

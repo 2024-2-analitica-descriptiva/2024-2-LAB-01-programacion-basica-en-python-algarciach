@@ -24,3 +24,24 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    from collections import Counter
+
+    col5 = []
+    newlist_col5 = []
+    key_list = []
+    result = {}
+
+    with open('./files/input/data.csv', 'r') as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            col5.append(column[4].replace(':', ' ').split(','))
+
+    newlist_col5 = [(item.split()[0], int(item.split()[1])) for sublist in col5 for item in sublist]
+
+    result = dict(sorted(list(Counter([key for key, _ in newlist_col5]).items())))
+
+    return(result)
+
+if __name__ == '__main__':
+    print(pregunta_09())

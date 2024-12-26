@@ -25,3 +25,21 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+    list_cols_12 = []
+    result = []
+
+    with open('./files/input/data.csv', 'r') as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            list_cols_12.append((column[0], int(column[1])))
+
+    for i in range(10):
+        tmp = [x for x in list_cols_12 if x[1] == i]
+        element_2 = [x[0] for x in tmp]
+        result.append((i, element_2))
+    
+    return(result)
+
+if __name__ == '__main__':
+    print(pregunta_07())

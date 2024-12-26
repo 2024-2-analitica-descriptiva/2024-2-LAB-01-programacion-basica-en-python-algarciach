@@ -15,3 +15,19 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+    from collections import Counter
+
+    list_col1 = []
+
+    with open("./files/input/data.csv", "r") as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            list_col1.append(column[0])
+
+    list_col1 = sorted(list(Counter(list_col1).items()))
+
+    return(list_col1)
+
+if __name__ == '__main__':
+    print(pregunta_02())

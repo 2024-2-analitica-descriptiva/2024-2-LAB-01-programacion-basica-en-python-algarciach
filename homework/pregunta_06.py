@@ -26,3 +26,26 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    col5 = []
+    newlist_col5 = []
+    key_list = []
+    result = []
+
+    with open('./files/input/data.csv', 'r') as f:
+        for line in f:
+            line = line.replace('\n', '').strip()
+            column = line.split('\t')
+            col5.append(column[4].replace(':', ' ').split(','))
+
+    newlist_col5 = [(item.split()[0], int(item.split()[1])) for sublist in col5 for item in sublist]
+        
+    key_list = sorted(set([key for key, _ in newlist_col5]))  
+
+    for i in key_list:
+        tmp = [x for x in newlist_col5 if x[0] == i] 
+        result.append((i, min(tmp)[1], max(tmp)[1]))
+
+    return(result)
+
+if __name__ == '__main__':
+    print(pregunta_06())
